@@ -7,12 +7,12 @@ pipeline {
               
         stage("start") {
             steps {
-                build job: 'start service', parameters: [string(name: 'start', value: "${params. systemctl start apache2}")]
+              echo  build job: 'start service', parameters: [string(name: 'start', value: "${params. systemctl start apache2}")]
             }
         }
         stage("stop") {
             steps {
-                build job: 'stop service', parameters: [string(name: 'stop', value: "${params. systemctl stop apache2}")]
+              echo  build job: 'stop service', parameters: [string(name: 'stop', value: "${params. systemctl stop apache2}")]
             }
         }     
     }
