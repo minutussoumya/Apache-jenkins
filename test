@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    stages {
+        stages('SCM Checkout') {
+              git 'https://github.com/minutussoumya/Apache-jenkins.git'
+              
+        stage("start") {
+            steps {
+                build job: 'start service', parameters: [string(name: 'start', value: "${params. systemctl start apache2}")]
+            }
+        }
+        stage("stop") {
+            steps {
+                build job: 'stop service', parameters: [string(name: 'stop', value: "${params. systemctl stop apache2}")]
+            }
+        }     
+    }
+}
+
